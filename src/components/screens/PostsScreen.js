@@ -7,17 +7,12 @@ import { PostComponent } from '../reusable_comp/PostComponent';
 
 
 class PostsScreen extends React.Component {
-
     state = {
-        postsList: [],
         page: 0
     }
 
     componentDidMount() {
-        setInterval(() => {
-            this.getPosts(this.state.page + 1)
-        }, 1000)
-
+        this.getPosts(this.state.page)
     }
 
     render() {
@@ -26,7 +21,7 @@ class PostsScreen extends React.Component {
                 flex: 1
             }}>
                 <FlatList
-                    data={this.state.postsList}
+                    data={this.props.postsList}
                     renderItem={({ item, index }) => {
                         return (
                             <View>
@@ -40,15 +35,15 @@ class PostsScreen extends React.Component {
     }
     getPosts = async () => {
         const res = await this.props.getPostsList(this.state.page)
-        if (res.success) {
-            this.setState({
-                postsList: res.success.postsList
-            })
-        }
     }
+}
 
+const mapStateToProps = (state) => {
+    return {
+        postsList: state.postsList
+    }
 }
 
 
 
-export default connect(null, { getPostsList })(PostsScreen);
+export default connect(mapStateToProps, { getPostsList })(PostsScreen);

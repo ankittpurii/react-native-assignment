@@ -20,7 +20,6 @@ export const PostComponent = (props) => {
             <Image
                 style={{
                     height: 250,
-
                     width: '100%',
                     backgroundColor: 'lightgrey'
                 }}

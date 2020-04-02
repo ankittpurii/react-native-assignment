@@ -8,8 +8,8 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_POSTS:
-            // console.log(state, "state")
-            return ;
+            return { ...state, postsList: [...action.payload] }
+
         default:
             return state;
     }
