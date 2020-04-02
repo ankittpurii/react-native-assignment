@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 
 
-
 export const PostComponent = (props) => {
     const item = props.item
     return (
